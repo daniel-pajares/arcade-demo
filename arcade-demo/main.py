@@ -73,6 +73,9 @@ class GameView(arcade.View):
     def __init__(self):
         super().__init__()
 
+        # Laser sound load
+        self.laser_sound = arcade.load_sound("laser.wav")
+
         self.time_taken = 0
 
         # Sprite lists
@@ -134,6 +137,7 @@ class GameView(arcade.View):
             coin.kill()
             self.score += 1
             self.window.total_score += 1
+            arcade.play_sound(self.laser_sound)
 
         # If we've collected all the games, then move to a "GAME_OVER"
         # state.
